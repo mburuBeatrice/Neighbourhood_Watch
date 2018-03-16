@@ -21,23 +21,23 @@ def find_neighbourhood(request, id):
         "instance":instance 
     }
     return render(request, 'index.html', context)
-# def create_neighbourhood(request):
-#     form = NeighbourhoodForm(request.POST or None, request.FILES or None)
-#     # current_user = request.user
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         instance.save()
-#         messages.success(request, "Successfully created")
-#         return HttpResponseRedirect(instance.get_absolute_url())
-#     else:
-#         messages.error(request, "Not successfully created")
+def create_neighbourhood(request):
+    form = NeighbourhoodForm(request.POST or None, request.FILES or None)
+    # current_user = request.user
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "Successfully created")
+        return HttpResponseRedirect(instance.get_absolute_url())
+    else:
+        messages.error(request, "Not successfully created")
 
 
-#     context = {
-#         "form" : form,
-#     }
+    context = {
+        "form" : form,
+    }
 
-#     return render(request, 'neighbourhood_form.html', context)
+    return render(request, 'neighbourhood_form.html', context)
 
 # delete_neigborhood()
 
