@@ -16,4 +16,9 @@ class User(models.Model):
     name = models.CharField(max_length=30)
     neighbourhood = models.ForeignKey(Neighbourhood)
     email_address = models.EmailField()
-    
+
+class Business(models.Model):
+    business_name = models.CharField(max_length=30)
+    user = models.ForeignKey(User)
+    neighbourhood = models.ForeignKey(Neighbourhood)
+    business_email_address = models.EmailField()

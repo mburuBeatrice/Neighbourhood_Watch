@@ -64,8 +64,4 @@ def update_neighbourhood(request, id=None):
 #     messages.success(request, "Post Deleted")
 #     return redirect("/")
    
-# delete_neigborhood()
-
-
-# update_neighborhood()
 # update_occupants()
