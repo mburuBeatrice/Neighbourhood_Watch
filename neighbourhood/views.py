@@ -74,43 +74,43 @@ def find_business(request, id):
         "instance":instance 
     }
     return render(request, 'index.html', context)
-    
-def create_business(request):
-    form = BusinessForm(request.POST or None, request.FILES or None)
-    # current_user = request.user
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        messages.success(request, "Successfully created")
-        return HttpResponseRedirect(instance.get_absolute_url())
-    else:
-        messages.error(request, "Not successfully created")
+
+# def create_business(request):
+#     form = BusinessForm(request.POST or None, request.FILES or None)
+#     # current_user = request.user
+#     if form.is_valid():
+#         instance = form.save(commit=False)
+#         instance.save()
+#         messages.success(request, "Successfully created")
+#         return HttpResponseRedirect(instance.get_absolute_url())
+#     else:
+#         messages.error(request, "Not successfully created")
 
 
-    context = {
-        "form" : form,
-    }
+#     context = {
+#         "form" : form,
+#     }
 
-    return render(request, 'business_form.html', context)
+#     return render(request, 'business_form.html', context)
 
-def update_business(request, id=None):
-    instance = get_object_or_404(Business, id=id)
-    form = BusinessForm(request.POST or None,request.FILES or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        messages.success(request, "Post Saved")
-        return HttpResponseRedirect(instance.get_absolute_url())
+# def update_business(request, id=None):
+#     instance = get_object_or_404(Business, id=id)
+#     form = BusinessForm(request.POST or None,request.FILES or None)
+#     if form.is_valid():
+#         instance = form.save(commit=False)
+#         instance.save()
+#         messages.success(request, "Post Saved")
+#         return HttpResponseRedirect(instance.get_absolute_url())
    
 
-    context = {
+#     context = {
 
-        "business_name":instance.business_name,
-        "instance": instance,
-        "form": form,
-    }
+#         "business_name":instance.business_name,
+#         "instance": instance,
+#         "form": form,
+#     }
     
-    return render(request, 'business_form.html', context)
+#     return render(request, 'business_form.html', context)
 
 # def delete_neighbourhood(request, id=None):
 #     instance = get_object_or_404(Neighbourhood, id=id)
