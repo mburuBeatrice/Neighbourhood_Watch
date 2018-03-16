@@ -93,29 +93,29 @@ def create_business(request):
 
     return render(request, 'business_form.html', context)
 
-# def update_business(request, id=None):
-#     instance = get_object_or_404(Business, id=id)
-#     form = BusinessForm(request.POST or None,request.FILES or None)
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         instance.save()
-#         messages.success(request, "Post Saved")
-#         return HttpResponseRedirect(instance.get_absolute_url())
+def update_business(request, id=None):
+    instance = get_object_or_404(Business, id=id)
+    form = BusinessForm(request.POST or None,request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "Post Saved")
+        return HttpResponseRedirect(instance.get_absolute_url())
    
 
-#     context = {
+    context = {
 
-#         "business_name":instance.business_name,
-#         "instance": instance,
-#         "form": form,
-#     }
+        "business_name":instance.business_name,
+        "instance": instance,
+        "form": form,
+    }
     
-#     return render(request, 'business_form.html', context)
+    return render(request, 'business_form.html', context)
 
-# def delete_neighbourhood(request, id=None):
-#     instance = get_object_or_404(Neighbourhood, id=id)
-#     instance.delete()
-#     messages.success(request, "Post Deleted")
-#     return redirect("/")
+def delete_neighbourhood(request, id=None):
+    instance = get_object_or_404(Neighbourhood, id=id)
+    instance.delete()
+    messages.success(request, "Post Deleted")
+    return redirect("/")
    
 
