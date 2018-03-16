@@ -39,6 +39,31 @@ def create_neighbourhood(request):
 
     return render(request, 'neighbourhood_form.html', context)
 
+def update_neighbourhood(request, id=None):
+    instance = get_object_or_404(Neighbourhood, id=id)
+    form = NeighbourhoodForm(request.POST or None,request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "Post Saved")
+        return HttpResponseRedirect(instance.get_absolute_url())
+   
+
+    context = {
+
+        "neighbourhood_name":instance.neighbourhood_name,
+        "instance": instance,
+        "form": form,
+    }
+    
+    return render(request, 'neighbourhood_form.html', context)
+
+# def delete_neighbourhood(request, id=None):
+#     instance = get_object_or_404(Neighbourhood, id=id)
+#     instance.delete()
+#     messages.success(request, "Post Deleted")
+#     return redirect("post_list")
+   
 # delete_neigborhood()
 
 
