@@ -12,3 +12,8 @@ class Neighbourhood(models.Model):
     def __str__(self):
         return self.neighbourhood_name
 
+class User(models.Model):
+    name = models.CharField(max_length=30)
+    neighbourhood = models.ForeignKey(Neighbourhood)
+    email_address = models.EmailField()
+    

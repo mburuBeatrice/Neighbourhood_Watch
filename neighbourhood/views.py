@@ -9,7 +9,7 @@ def index(request):
 
     context = {
         "object_list":queryset,
-        "neighbourhood_name": "name"
+     
     }
     return render(request, 'index.html',context)
 
@@ -58,11 +58,11 @@ def update_neighbourhood(request, id=None):
     
     return render(request, 'neighbourhood_form.html', context)
 
-def delete_neighbourhood(request, id=None):
-    instance = get_object_or_404(Neighbourhood, id=id)
-    instance.delete()
-    messages.success(request, "Post Deleted")
-    return redirect("/")
+# def delete_neighbourhood(request, id=None):
+#     instance = get_object_or_404(Neighbourhood, id=id)
+#     instance.delete()
+#     messages.success(request, "Post Deleted")
+#     return redirect("/")
    
 # delete_neigborhood()
 
