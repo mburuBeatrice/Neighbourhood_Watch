@@ -13,14 +13,14 @@ def index(request):
     }
     return render(request, 'index.html',context)
 
-# def find_neighbourhood(request, id):
+def find_neighbourhood(request, id):
 
-#     instance = get_object_or_404(Neighbourhood, id=id)
-#     context = {
-#         "neighbourhood_name":instance.neighbourhood_name,
-#         "instance":instance 
-#     }
-#     return render(request, 'index.html', context)
+    instance = get_object_or_404(Neighbourhood, id=id)
+    context = {
+        "neighbourhood_name":instance.neighbourhood_name,
+        "instance":instance 
+    }
+    return render(request, 'index.html', context)
 # def create_neighbourhood(request):
 #     form = NeighbourhoodForm(request.POST or None, request.FILES or None)
 #     # current_user = request.user
