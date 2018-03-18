@@ -20,8 +20,8 @@ class Neighbourhood(models.Model):
         return self.remove()
 
     def find_neighbourhood(neighbourhood_id):
-        neighbourhood = Neighbourhood.objects.filter(neighbourhood_id = id)
-        return neighbourhood
+        find_neighbourhood = Neighbourhood.objects.filter(neighbourhood_id = id)
+        return find_neighbourhood
     @classmethod
     def update_neighbourhood(cls, id, neighbourhood_name):
         update_neighbourhood = Neighbourhood.objects.filter(id=id).update(neighbourhood_name = neighbourhood_name)
@@ -35,10 +35,10 @@ class Neighbourhood(models.Model):
 
 
 
-# class User(models.Model):
-#     name = models.CharField(max_length=30)
-#     neighbourhood = models.ForeignKey(Neighbourhood)
-#     email_address = models.EmailField()
+class UserProfile(models.Model):
+    name = models.CharField(max_length=30)
+    neighbourhood = models.ForeignKey(Neighbourhood)
+    email_address = models.EmailField()
 
 
 
