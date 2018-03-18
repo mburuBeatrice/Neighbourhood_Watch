@@ -2,15 +2,17 @@ from .models import Neighbourhood,Business,UserProfile,Contacts
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib import messages
-# from .forms import NeighbourhoodForm,BusinessForm
+from django.contrib.auth.decorators import login_required
+from .forms import NeighbourhoodForm,BusinessForm,NewPostForm
 # Create your views here.
 def index(request):
     hoods = Neighbourhood.objects.all()
     businesses = Business.objects.all()
-
+    posts = Posts.objects.all()
     context = {
         "hoods":hoods,
-        "businesses":businesses
+        "businesses": businesses,
+        "posts": posts
     }
     return render(request, 'index.html', context)
 def profile(request, id):
@@ -36,100 +38,50 @@ def find_contact(request):
         "contact": contact
     }
     return render(request, 'contact.html', context)
-# def create_neighbourhood(request):
-#     form = NeighbourhoodForm(request.POST or None, request.FILES or None)
-#     # current_user = request.user
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         instance.save()
-#         messages.success(request, "Successfully created")
-#         return HttpResponseRedirect(instance.get_absolute_url())
-#     else:
-#         messages.error(request, "Not successfully created")
 
 
-#     context = {
-#         "form" : form,
-#     }
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    if request.method == 'POST':
+        form = NewPostForm(request.POST or None, request.FILES or None)
+        # current_user = request.user
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.save()
+            messages.success(request, "Successfully created")
+            return redirect('/')
+    else:
+        messages.error(request, "Not successfully created")
 
-#     return render(request, 'neighbourhood_form.html', context)
+    context = {
+        "form" : form,
+    }
 
-# def update_neighbourhood(request, id=None):
-#     instance = get_object_or_404(Neighbourhood, id=id)
-#     form = NeighbourhoodForm(request.POST or None,request.FILES or None)
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         instance.save()
-#         messages.success(request, "Post Saved")
-#         return HttpResponseRedirect(instance.get_absolute_url())
-   
+    return render(request, 'new_post.html', context)
+@login_required(login_url='/accounts/login/')
+def new_neighbourhood(request):
+    if request.method == 'POST':
+        form = NeighbourhoodForm(request.POST or None, request.FILES or None)
+        # current_user = request.user
+        if form.is_valid():
+            new_neighbourhood = form.save(commit=False)
+            new_neighbourhood.save()
+            messages.success(request, "Successfully created")
+            return redirect('/')
+    else:
+        messages.error(request, "Not successfully created")
 
-#     context = {
+    context = {
+        "form" : form,
+    }
 
-#         "neighbourhood_name":instance.neighbourhood_name,
-#         "instance": instance,
-#         "form": form,
-#     }
-    
-#     return render(request, 'neighbourhood_form.html', context)
+    return render(request, 'new_post.html', context)
+def find_business(request,):
 
-# def delete_neighbourhood(request, id=None):
-#     instance = get_object_or_404(Neighbourhood, id=id)
-#     instance.delete()
-#     messages.success(request, "Post Deleted")
-#     return redirect("/")
-   
-# update_occupants()
-# def find_business(request, id):
-
-#     instance = get_object_or_404(Business, id=id)
-#     context = {
-#         "business_name":instance.business_name,
-#         "instance":instance 
-#     }
-#     return render(request, 'index.html', context)
-
-# def create_business(request):
-#     form = BusinessForm(request.POST or None, request.FILES or None)
-#     # current_user = request.user
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         instance.save()
-#         messages.success(request, "Successfully created")
-#         return HttpResponseRedirect(instance.get_absolute_url())
-#     else:
-#         messages.error(request, "Not successfully created")
-
-
-#     context = {
-#         "form" : form,
-#     }
-
-#     return render(request, 'business_form.html', context)
-
-# def update_business(request, id=None):
-#     instance = get_object_or_404(Business, id=id)
-#     form = BusinessForm(request.POST or None,request.FILES or None)
-#     if form.is_valid():
-#         instance = form.save(commit=False)
-#         instance.save()
-#         messages.success(request, "Post Saved")
-#         return HttpResponseRedirect(instance.get_absolute_url())
-   
-
-#     context = {
-
-#         "business_name":instance.business_name,
-#         "instance": instance,
-#         "form": form,
-#     }
-    
-#     return render(request, 'business_form.html', context)
-
-# def delete_neighbourhood(request, id=None):
-#     instance = get_object_or_404(Neighbourhood, id=id)
-#     instance.delete()
-#     messages.success(request, "Post Deleted")
-#     return redirect("/")
-   
+    instance = get_object_or_404(Business, id=id)
+    context = {
+        "business_name":instance.business_name,
+        "instance":instance 
+    }
+    return render(request, 'index.html', context)
 
