@@ -6,11 +6,11 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     url(r'^$',views.index,name = 'index'),
-    url(r'^profile/(?P<id>\d+)/$', views.profile, name = 'profile'),
-    url(r'^neighbourhood/(?P<id>\d+)/$', views.find_neighbourhood, name = 'neighbourhood'),
-    url(r'^contact/$', views.find_contact, name= 'contact'),
-    url(r'^post/$', views.new_post, name='new_post'),
-    url(r'^new_neighbourhood/$', views.new_neighbourhood, name='new_neighbourhood'),
+    # url(r'^profile/(?P<id>\d+)/$', views.profile, name = 'profile'),
+    # url(r'^neighbourhood/(?P<id>\d+)/$', views.find_neighbourhood, name = 'neighbourhood'),
+    # url(r'^contact/$', views.find_contact, name= 'contact'),
+    # url(r'^post/$', views.new_post, name='new_post'),
+    # url(r'^new_neighbourhood/$', views.new_neighbourhood, name='new_neighbourhood'),
    
 ]
 
