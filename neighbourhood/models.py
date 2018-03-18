@@ -71,3 +71,13 @@ class Business(models.Model):
     def search_business(cls,search_term):
         business = cls.objects.filter(business_name__icontains=search_term)
         return business
+
+class Contacts(models.Model):
+    name = models.CharField(max_length=30)
+    phone_number = models.IntegerField()
+    email_address = models.EmailField()
+    neighbourhood = models.ForeignKey(Neighbourhood)
+
+    def __str__(self):
+        return self.name
+        
