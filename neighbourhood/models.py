@@ -19,19 +19,19 @@ class Neighbourhood(models.Model):
     def delete_neighbourhood(self):
         return self.delete()
 
-    # @classmethod
-    # def find_neighbourhood(neighbourhood_id):
-    #     find_neighbourhood = Neighbourhood.objects.filter(neighbourhood_id = id)
-    #     return find_neighbourhood
-    # @classmethod
-    # def update_neighbourhood(cls, id, neighbourhood_name):
-    #     update_neighbourhood = Neighbourhood.objects.filter(id=id).update(neighbourhood_name = neighbourhood_name)
-    #     return update_neighbourhood
+    @classmethod
+    def find_neighbourhood(neighbourhood_id):
+        find_neighbourhood = Neighbourhood.objects.filter(neighbourhood_id = id)
+        return find_neighbourhood
+    @classmethod
+    def update_neighbourhood(cls, id, neighbourhood_name):
+        update_neighbourhood = Neighbourhood.objects.filter(id=id).update(neighbourhood_name = neighbourhood_name)
+        return update_neighbourhood
 
-    # @classmethod
-    # def update_occupants(cls, id, occupation_count):
-    #     update_occupants = Neighbourhood.objects.filter(id=id).update(occupation_count = occupation_count)
-    #     return update_occupants()
+    @classmethod
+    def update_occupants(cls, id, occupation_count):
+        update_occupants = Neighbourhood.objects.filter(id=id).update(occupation_count = occupation_count)
+        return update_occupants()
 
 
 
@@ -59,14 +59,14 @@ class Business(models.Model):
     def delete_business(self):
         return self.delete()
 
-#     @classmethod
-#     def find_business(business_id):
-#         find_business = Business.objects.filter(business_id = business_id)
-#         return find_business
-#     @classmethod
-#     def update_business(cls, id, business_name):
-#         update_business = Business.objects.filter(id=id).update(business_name =business_name)
-#         return update_business
+    @classmethod
+    def find_business(business_id):
+        find_business = Business.objects.filter(business_id = business_id)
+        return find_business
+    @classmethod
+    def update_business(cls, id, business_name):
+        update_business = Business.objects.filter(id=id).update(business_name =business_name)
+        return update_business
 #     @classmethod
 #     def search_business(cls,search_term):
 #         business = cls.objects.filter(business_name__icontains=search_term)

@@ -24,4 +24,16 @@
       <p>Occupants:{{hood.occupation_count}}</p>
     {% endfor %}
  <br>
+ <h2>Contacts</h2>
+ {% for hoods in contact%}
+   <p>Name:{{hoods.name }}</p>
+   <p>Phone_number: {{hoods.phone_number}}</p>
+   <p>Email:{{hoods.email_address}}</p>
+ {% endfor %}
+ <br>
+ <h2>UserProfile</h2>
+ {% for hoods in profile%}
+   <p>Name:{{hoods.name }}</p>
+   <p>Email:{{hoods.email_address}}</p>
+ {% endfor %}
 {% endblock %}

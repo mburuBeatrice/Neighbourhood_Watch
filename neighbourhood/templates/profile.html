@@ -2,9 +2,10 @@
 {% load bootstrap4 %}
 {% block content %}
 {{block.super}}
-
+{% for hoods in profile%}
 <h4>User</h4>
 <p>Name:{{new_profile.name}}</p>
 <p>Name:{{new_profile.neighbourhood}}</p>
 <p>Name:{{new_profile.email_address}}</p> 
+{%endfor%}
 {% endblock %}
