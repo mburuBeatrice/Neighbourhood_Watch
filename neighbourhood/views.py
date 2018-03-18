@@ -5,14 +5,14 @@ from django.contrib import messages
 # from .forms import NeighbourhoodForm,BusinessForm
 # Create your views here.
 def index(request):
-    # queryset = Neighbourhood.objects.all()
-    # query = Business.objects.all()
+    hoods = Neighbourhood.objects.all()
+    businesses = Business.objects.all()
 
-    # context = {
-    #     "object_list":queryset,
-    #     "object":query
-    # }
-    return render(request, 'index.html')
+    context = {
+        "hoods":hoods,
+        "businesses":businesses
+    }
+    return render(request, 'index.html', context)
 def profile(request, id):
 
     profile = get_object_or_404(UserProfile, id=id)
@@ -20,14 +20,14 @@ def profile(request, id):
         "new_profile": profile
     }
     return render(request, 'profile.html', context)
-# def find_neighbourhood(request, id):
+def find_neighbourhood(request, id):
 
-#     instance = get_object_or_404(Neighbourhood, id=id)
-#     context = {
-#         "neighbourhood_name":instance.neighbourhood_name,
-#         "instance":instance 
-#     }
-#     return render(request, 'index.html', context)
+    hood = get_object_or_404(Neighbourhood, id=id)
+    context = {
+        "hood": hood,
+    
+    }
+    return render(request, 'search.html', context)
 # def create_neighbourhood(request):
 #     form = NeighbourhoodForm(request.POST or None, request.FILES or None)
 #     # current_user = request.user
