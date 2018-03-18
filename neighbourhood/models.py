@@ -17,8 +17,9 @@ class Neighbourhood(models.Model):
         return self.save()
 
     def delete_neighbourhood(self):
-        return self.remove()
-
+        return self.delete()
+        
+    @classmethod
     def find_neighbourhood(neighbourhood_id):
         find_neighbourhood = Neighbourhood.objects.filter(neighbourhood_id = id)
         return find_neighbourhood
@@ -29,7 +30,7 @@ class Neighbourhood(models.Model):
 
     @classmethod
     def update_occupants(cls, id, occupation_count):
-        update_occupants =  neighbourhood_update = Neighbourhood.objects.filter(id=id).update(occupation_count = occupation_count)
+        update_occupants = Neighbourhood.objects.filter(id=id).update(occupation_count = occupation_count)
         return update_occupants()
 
 
@@ -40,10 +41,29 @@ class UserProfile(models.Model):
     neighbourhood = models.ForeignKey(Neighbourhood)
     email_address = models.EmailField()
 
+    def __str__(self):
+        return self.name
 
+class Business(models.Model):
+    business_name = models.CharField(max_length=30)
+    user = models.ForeignKey(User)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+    business_email_address = models.EmailField()
 
-# class Business(models.Model):
-#     business_name = models.CharField(max_length=30)
-#     user = models.ForeignKey(User)
-#     neighbourhood = models.ForeignKey(Neighbourhood)
-#     business_email_address = models.EmailField()
+    def __str__(self):
+        return self.business_name
+
+    def create_business(self):
+        return self.save()
+    
+    def delete_business(self):
+        return self.delete()
+
+    @classmethod
+    def find_business(business_id):
+        find_business = Business.objects.filter(business_id = business_id)
+        return find_business
+    @classmethod
+    def update_business(cls, id, business_name):
+        update_business = Business.objects.filter(id=id).update(business_name =business_name)
+        return update_business
