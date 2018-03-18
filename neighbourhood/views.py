@@ -1,7 +1,7 @@
-# from .models import Neighbourhood,Business,User
+from .models import Neighbourhood,Business,UserProfile
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-# from django.contrib import messages
+from django.contrib import messages
 # from .forms import NeighbourhoodForm,BusinessForm
 # Create your views here.
 def index(request):
@@ -13,7 +13,13 @@ def index(request):
     #     "object":query
     # }
     return render(request, 'index.html')
+def profile(request, id):
 
+    profile = get_object_or_404(UserProfile, id=id)
+    context ={
+        "new_profile": profile
+    }
+    return render(request, 'profile.html', context)
 # def find_neighbourhood(request, id):
 
 #     instance = get_object_or_404(Neighbourhood, id=id)

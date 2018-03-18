@@ -18,7 +18,7 @@ class Neighbourhood(models.Model):
 
     def delete_neighbourhood(self):
         return self.delete()
-        
+
     @classmethod
     def find_neighbourhood(neighbourhood_id):
         find_neighbourhood = Neighbourhood.objects.filter(neighbourhood_id = id)
@@ -67,3 +67,7 @@ class Business(models.Model):
     def update_business(cls, id, business_name):
         update_business = Business.objects.filter(id=id).update(business_name =business_name)
         return update_business
+    @classmethod
+    def search_business(cls,search_term):
+        business = cls.objects.filter(business_name__icontains=search_term)
+        return business
