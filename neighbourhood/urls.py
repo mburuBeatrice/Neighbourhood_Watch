@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns=[
     url(r'^$',views.index,name = 'index'),
     url(r'^profile/(?P<id>\d+)/$', views.profile, name = 'profile'),
+    url(r'^contact/$', views.find_contact, name= 'contact')
 ]
 
 if settings.DEBUG:

@@ -80,4 +80,10 @@ class Contacts(models.Model):
 
     def __str__(self):
         return self.name
-        
+
+class Posts(models.Model):
+    user = models.ForeignKey(UserProfile) 
+    post = models.TextField(max_length=250)
+
+    def __str__(self):
+        return self.post    
