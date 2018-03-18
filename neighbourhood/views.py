@@ -1,4 +1,4 @@
-from .models import Neighbourhood,Business,UserProfile
+from .models import Neighbourhood,Business,UserProfile,Contacts
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib import messages
@@ -28,6 +28,14 @@ def find_neighbourhood(request, id):
     
     }
     return render(request, 'search.html', context)
+
+def find_contact(request):
+
+    contact = Contacts.objects.all()
+    context = {
+        "contact": contact
+    }
+    return render(request, 'contact.html', context)
 # def create_neighbourhood(request):
 #     form = NeighbourhoodForm(request.POST or None, request.FILES or None)
 #     # current_user = request.user
