@@ -67,10 +67,10 @@ class Business(models.Model):
     def update_business(cls, id, business_name):
         update_business = Business.objects.filter(id=id).update(business_name =business_name)
         return update_business
-#     @classmethod
-#     def search_business(cls,search_term):
-#         business = cls.objects.filter(business_name__icontains=search_term)
-#         return business
+    # @classmethod
+    # def search_business(cls,search_term):
+    #     business = cls.objects.filter(neighbourhood_neighbourhood_name__icontains=search_term)
+    #     return business
 
 class Contacts(models.Model):
     name = models.CharField(max_length=30)
