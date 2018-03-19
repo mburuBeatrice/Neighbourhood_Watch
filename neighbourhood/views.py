@@ -7,7 +7,9 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-  
+    return render(request, 'index.html')
+
+def home(request):
     hoods = Neighbourhood.objects.all()
     businesses = Business.objects.all()
     posts = Posts.objects.all()
@@ -20,8 +22,9 @@ def index(request):
         "contact":contact,
         "profile":profile
     }
-    return render(request, 'index.html', context)
-    
+
+    return render(request, 'home.html', context)
+
 def profile(request, id):
 
     profile = get_object_or_404(UserProfile, id=id)
