@@ -8,13 +8,10 @@ A web application that allows you to be in the loop about everything happening i
 * A user can sign in to the application
 * A user can create a profile and set profile with general information and location
 * A user can view a list of different businesses in my neighborhood.
-* A user can Rate the different Businesses.
-* A user can Find the contact Information of different handymen such Electricians
-* A user can leave a review for the different handymen.
 * A user can find contact Information public services such as health department and the police department.
-* A user can post to as well as view posts on their neighborhood tutorials
-* A user can move out of a neighborhood
-* A user can only view information concerning their neighborhood
+* A user can post to as well as view posts on their neighborhood.
+* A user can move out of a neighborhood.
+* A user can only view information concerning their neighborhood.
 
 ## More Specifications
 
